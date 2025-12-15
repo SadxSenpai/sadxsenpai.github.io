@@ -461,7 +461,7 @@ h2::after {
     overflow: hidden;
 }
 
-.content-stream > section {
+.content-stream > * {
     position: relative;
     z-index: 1;
 }
@@ -671,6 +671,7 @@ h2::after {
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
+    align-items: stretch;
 }
 
 .project-card {
@@ -685,6 +686,7 @@ h2::after {
     height: 100%;
     display: flex;
     flex-direction: column;
+    min-height: 520px;
 }
 
 .project-card:hover {
@@ -721,12 +723,22 @@ h2::after {
     margin-bottom: 0.5rem;
     color: var(--text-light);
     text-transform: uppercase;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .project-info p {
     color: var(--text-muted);
     margin-bottom: 1.5rem;
     font-size: 0.9rem;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .project-links {
