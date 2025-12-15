@@ -163,6 +163,7 @@ nav {
     position: relative;
 }
 
+
 /* --- NEW HERO GLITCH STYLES --- */
 
 /* 1. Main Text Style */
@@ -454,6 +455,337 @@ h2::after {
     box-shadow: 0 0 10px var(--primary-color);
 }
 
+/* Netrunner / Terminal Background (About+) */
+.content-stream {
+    position: relative;
+    overflow: hidden;
+}
+
+.content-stream > * {
+    position: relative;
+    z-index: 1;
+}
+
+.content-stream::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.55;
+    background-image:
+        /* subtle red grid */
+        linear-gradient(color-mix(in srgb, var(--primary-color) 12%, transparent) 1px, transparent 1px),
+        linear-gradient(90deg, color-mix(in srgb, var(--primary-color) 10%, transparent) 1px, transparent 1px),
+        /* scanlines */
+        repeating-linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--text-light) 6%, transparent) 0px,
+            color-mix(in srgb, var(--text-light) 6%, transparent) 1px,
+            transparent 1px,
+            transparent 5px
+        ),
+        /* vignette */
+        radial-gradient(
+            ellipse at top,
+            color-mix(in srgb, var(--primary-color) 14%, transparent) 0%,
+            transparent 60%
+        ),
+        /* tiny green accent glow (keeps it "netrunner" not just red) */
+        radial-gradient(
+            circle at 30% 20%,
+            color-mix(in srgb, var(--secondary-color) 8%, transparent) 0%,
+            transparent 45%
+        );
+    background-size: 90px 90px, 90px 90px, 100% 6px, 100% 100%, 100% 100%;
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+    animation: terminal-drift 22s linear infinite;
+}
+
+.content-stream::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.25;
+    background-image:
+        linear-gradient(
+            135deg,
+            transparent 0%,
+            color-mix(in srgb, var(--primary-color) 9%, transparent) 35%,
+            transparent 70%
+        );
+    background-size: 260% 260%;
+    animation: terminal-sheen 10s ease-in-out infinite;
+}
+
+@keyframes terminal-drift {
+    0% {
+        background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+    }
+    100% {
+        background-position: 180px 260px, -220px 140px, 0 0, 0 0, 0 0;
+    }
+}
+
+@keyframes terminal-sheen {
+    0%, 100% {
+        transform: translate3d(-6%, -2%, 0);
+        opacity: 0.18;
+    }
+    50% {
+        transform: translate3d(6%, 2%, 0);
+        opacity: 0.28;
+    }
+}
+
+/* Resume "Terminal Mash" */
+.resume-lab {
+    padding-bottom: 5rem;
+}
+
+.resume-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-top: -1.75rem;
+    margin-bottom: 2.5rem;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.terminal-desk {
+    position: relative;
+    min-height: auto;
+    border: 1px solid var(--border-color);
+    background:
+        linear-gradient(color-mix(in srgb, var(--primary-color) 10%, transparent) 1px, transparent 1px),
+        linear-gradient(90deg, color-mix(in srgb, var(--primary-color) 10%, transparent) 1px, transparent 1px),
+        radial-gradient(circle at 22% 18%, color-mix(in srgb, var(--secondary-color) 10%, transparent) 0%, transparent 50%),
+        radial-gradient(ellipse at top, color-mix(in srgb, var(--primary-color) 10%, transparent) 0%, transparent 62%),
+        color-mix(in srgb, var(--card-bg) 90%, transparent);
+    background-size: 56px 56px, 56px 56px, 100% 100%, 100% 100%, auto;
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+    overflow: hidden;
+    padding: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    grid-template-areas:
+        "profile summary"
+        "links skills"
+        "exp edu";
+}
+
+.terminal-desk::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.2;
+    background-image:
+        repeating-linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--text-light) 6%, transparent) 0px,
+            color-mix(in srgb, var(--text-light) 6%, transparent) 1px,
+            transparent 1px,
+            transparent 6px
+        );
+}
+
+.terminal-window {
+    position: relative;
+    border: 1px solid var(--border-color);
+    background: color-mix(in srgb, var(--card-bg) 92%, transparent);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    width: auto;
+    transform: none;
+}
+
+.terminal-window.w-profile { grid-area: profile; }
+.terminal-window.w-summary { grid-area: summary; }
+.terminal-window.w-links { grid-area: links; }
+.terminal-window.w-skills { grid-area: skills; }
+.terminal-window.w-exp { grid-area: exp; }
+.terminal-window.w-edu { grid-area: edu; }
+
+.terminal-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.65rem 0.85rem;
+    border-bottom: 1px solid var(--border-color);
+    background: color-mix(in srgb, var(--bg-color) 80%, transparent);
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.terminal-dot {
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--border-color);
+    background: color-mix(in srgb, var(--primary-color) 20%, transparent);
+}
+
+.terminal-title {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    flex: 1;
+}
+
+.terminal-controls {
+    display: inline-flex;
+    gap: 0.35rem;
+}
+
+.terminal-pill {
+    width: 10px;
+    height: 10px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+}
+
+.terminal-body {
+    padding: 1rem 1rem 1.1rem;
+    color: var(--text-light);
+}
+
+.terminal-h {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.35rem;
+    font-size: 1.1rem;
+}
+
+.terminal-h2 {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0.85rem 0 0.5rem;
+    font-size: 0.9rem;
+}
+
+.terminal-muted {
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+}
+
+.terminal-kv {
+    margin-top: 0.75rem;
+    display: grid;
+    gap: 0.35rem;
+    color: var(--text-muted);
+}
+
+.terminal-k {
+    color: var(--secondary-color);
+}
+
+.terminal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.terminal-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid color-mix(in srgb, var(--primary-color) 40%, var(--border-color));
+    color: var(--primary-color);
+    background: rgba(255, 0, 60, 0.06);
+}
+
+.terminal-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.terminal-list {
+    margin-left: 1.1rem;
+    color: var(--text-muted);
+}
+
+.terminal-timeline {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.75rem;
+    display: grid;
+    gap: 0.6rem;
+}
+
+.terminal-timeline li {
+    display: grid;
+    grid-template-columns: 4.2rem 1fr;
+    gap: 0.75rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid color-mix(in srgb, var(--primary-color) 35%, transparent);
+}
+
+.terminal-time {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--primary-color);
+}
+
+.terminal-event {
+    color: var(--text-muted);
+}
+
+.resume-links {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 0.25rem;
+}
+
+.resume-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    background: color-mix(in srgb, var(--bg-color) 70%, transparent);
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+}
+
+.resume-link:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(255, 0, 60, 0.2);
+}
+
+@media (max-width: 900px) {
+    .terminal-desk {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        grid-template-areas:
+            "profile"
+            "summary"
+            "links"
+            "skills"
+            "exp"
+            "edu";
+    }
+
+    .terminal-split {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* About Section */
 .about-content {
     display: grid;
@@ -493,13 +825,16 @@ h2::after {
 
 /* Expertise Section */
 .expertise-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
     margin-top: 2rem;
 }
 
 .expertise-card {
+    flex: 1 1 300px;
+    max-width: 400px;
     background: rgba(10, 10, 10, 0.9);
     border: 1px solid var(--border-color);
     border-radius: 0;
@@ -578,12 +913,16 @@ h2::after {
 
 /* Projects Section */
 .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
+    align-items: stretch;
 }
 
 .project-card {
+    flex: 1 1 300px;
+    max-width: 400px;
     background: var(--card-bg);
     border-radius: 0;
     overflow: hidden;
@@ -593,6 +932,7 @@ h2::after {
     height: 100%;
     display: flex;
     flex-direction: column;
+    min-height: 520px;
 }
 
 .project-card:hover {
@@ -629,12 +969,22 @@ h2::after {
     margin-bottom: 0.5rem;
     color: var(--text-light);
     text-transform: uppercase;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .project-info p {
     color: var(--text-muted);
     margin-bottom: 1.5rem;
     font-size: 0.9rem;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .project-links {
@@ -715,6 +1065,98 @@ h2::after {
     border-color: var(--primary-color);
     box-shadow: 0 0 15px var(--primary-color);
     background: rgba(255, 0, 60, 0.1);
+}
+
+.contact-form-wip {
+    margin: 2.5rem auto 0;
+    max-width: 720px;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    opacity: 0.55;
+    filter: grayscale(1);
+    pointer-events: none;
+}
+
+.contact-form-wip-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+.wip-badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+}
+
+.contact-form {
+    text-align: left;
+}
+
+.contact-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.contact-form label {
+    display: block;
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-form label span {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    font-family: 'Rajdhani', sans-serif;
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form-message {
+    margin-bottom: 1rem;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.contact-form button[disabled] {
+    background: var(--border-color);
+    border-color: var(--border-color);
+    color: var(--text-muted);
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .contact-form-row {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Footer */
@@ -921,5 +1363,94 @@ footer {
     }
     .carousel-container {
         padding: 0 40px;
+    }
+}
+
+/* Back Link Styles */
+.back-link {
+    position: fixed;
+    top: 100px;
+    left: 2rem;
+    z-index: 1000;
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--text-light);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    background: rgba(5, 5, 5, 0.9);
+    padding: 10px 20px;
+    border: 1px solid var(--primary-color);
+    text-transform: uppercase;
+}
+.back-link:hover {
+    background: var(--primary-color);
+    color: #000;
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+/* Technical Docs Styles */
+.technical-docs h2, .technical-docs h3, .technical-docs h4 {
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+}
+.technical-docs h2 {
+    border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+.technical-docs p, .technical-docs li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+    font-size: 1.2rem;
+}
+.technical-docs code {
+    background: rgba(255, 0, 60, 0.1);
+    color: var(--primary-color);
+    padding: 0.2rem 0.4rem;
+    font-family: 'Share Tech Mono', monospace;
+}
+.img-placeholder {
+    background: #111;
+    border: 1px dashed #333;
+    padding: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+    color: #666;
+    font-family: 'Share Tech Mono', monospace;
+}
+.doc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+.doc-table th {
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+.doc-table td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #333;
+}
+.mobile-warning {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid var(--primary-color);
+    background: rgba(10, 10, 10, 0.9);
+    color: var(--text-light);
+    font-family: 'Share Tech Mono', monospace;
+    margin-bottom: 2rem;
+    width: 90%;
+    max-width: 600px;
+}
+@media (max-width: 768px) {
+    .mobile-warning {
+        display: block;
     }
 }

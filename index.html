@@ -76,6 +76,7 @@
             </div>
         </section>
 
+        <div class="content-stream">
         <section id="about" class="about">
             <div class="container">
                 <h2>About Me</h2>
@@ -83,6 +84,10 @@
                     <div class="about-text">
                         <p>I am a passionate developer with a knack for creating efficient and scalable solutions. My journey in coding began with a curiosity for how things work, which quickly evolved into a career in software development.</p>
                         <p>With a strong foundation in C# and .NET, I specialize in building robust applications and immersive games. I love tackling complex problems and turning ideas into reality through code.</p>
+
+                        <div class="hero-btns" style="justify-content: flex-start; margin-top: 1.25rem;">
+                            <a href="resume.html" class="btn btn-outline">Resume</a>
+                        </div>
                     </div>
                     <div class="skills">
                         <span class="skill-tag">C#</span>
@@ -212,13 +217,39 @@
             <div class="container">
                 <h2>Get In Touch</h2>
                 <p>Have a project in mind or just want to say hi?</p>
-                <a href="mailto:email@example.com" class="btn btn-outline">Say Hello</a>
+
+                <div class="contact-form-wip" aria-disabled="true">
+                    <div class="contact-form-wip-header">
+                        <span class="wip-badge">WIP</span>
+                        <span class="wip-text">Email contact form (coming soon)</span>
+                    </div>
+                    <form class="contact-form" action="#" method="post">
+                        <div class="contact-form-row">
+                            <label>
+                                <span>Name</span>
+                                <input type="text" name="name" placeholder="Your name" disabled>
+                            </label>
+                            <label>
+                                <span>Email</span>
+                                <input type="email" name="email" placeholder="you@example.com" disabled>
+                            </label>
+                        </div>
+                        <label class="contact-form-message">
+                            <span>Message</span>
+                            <textarea name="message" rows="5" placeholder="Your message..." disabled></textarea>
+                        </label>
+                        <button class="btn" type="button" disabled>Send Message</button>
+                    </form>
+                </div>
+
                 <div class="social-links">
                     <a href="https://github.com/SadxSenpai" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/marvin-h-952216265/" target="_blank"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </section>
+
+        </div>
     </main>
 
     <footer>
