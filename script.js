@@ -198,4 +198,51 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Contact form submission via Web3Forms without redirects
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm && contactForm.action.includes('web3forms.com')) {
+        const statusEl = document.getElementById('contact-status');
+
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(contactForm);
+
+            if (statusEl) {
+                statusEl.textContent = 'Sending...';
+                statusEl.className = 'form-status pending';
+            }
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    if (statusEl) {
+                        statusEl.textContent = 'Message sent! I will reply soon.';
+                        statusEl.className = 'form-status success';
+                    } else {
+                        alert('Message sent! I will reply soon.');
+                    }
+                    contactForm.reset();
+                } else {
+                    if (statusEl) {
+                        statusEl.textContent = 'Something went wrong. Please try again.';
+                        statusEl.className = 'form-status error';
+                    } else {
+                        alert('Something went wrong. Please try again.');
+                    }
+                }
+            } catch (error) {
+                if (statusEl) {
+                    statusEl.textContent = 'Network error. Please try again later.';
+                    statusEl.className = 'form-status error';
+                } else {
+                    alert('Network error. Please try again later.');
+                }
+            }
+        });
+    }
 });
