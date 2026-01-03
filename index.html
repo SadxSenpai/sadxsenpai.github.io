@@ -191,7 +191,7 @@
                         </div>
                         <div class="project-info">
                             <h3>Library Management System</h3>
-                            <p>Enterprise-grade desktop application demonstrating complete CRUD operations, data persistence, and business logic implementation in C# WPF architecture.</p>
+                            <p>Windows desktop inventory system built in C# WinForms with complete CRUD, MySQL-backed persistence, and real-time search/filtering—foundational ERP patterns applied to catalog management.</p>
                             <div class="project-links">
                                 <a href="https://github.com/SadxSenpai/Buecherei_Windows_App" target="_blank"><i class="fab fa-github"></i> Code</a>
                                 <a href="project-buecherei.html"><i class="fas fa-info-circle"></i> View More</a>
@@ -200,11 +200,11 @@
                     </div>
                     <div class="project-card">
                         <div class="project-image" style="background: linear-gradient(45deg, #306998, #FFD43B);">
-                            <i class="fas fa-code project-icon-overlay"></i>
+                            <i class="fas fa-robot project-icon-overlay"></i>
                         </div>
                         <div class="project-info">
                             <h3>Data Processing & API Integration</h3>
-                            <p>Python application demonstrating data parsing, API integration, and cloud deployment with AWS. Handles real-time data processing and automated workflows.</p>
+                            <p>Python automation bot integrating external APIs (GraphQL), transforming data pipelines, and running on AWS—real-time processing with automated workflows and command-driven UX.</p>
                             <div class="project-links">
                                 <a href="https://github.com/SadxSenpai/PuffPastry-Parser" target="_blank"><i class="fab fa-github"></i> Code</a>
                                 <a href="project-puffpastry.html"><i class="fas fa-info-circle"></i> View More</a>
@@ -220,29 +220,24 @@
                 <h2>Get In Touch</h2>
                 <p>Have a project in mind or just want to say hi?</p>
 
-                <div class="contact-form-wip" aria-disabled="true">
-                    <div class="contact-form-wip-header">
-                        <span class="wip-badge">WIP</span>
-                        <span class="wip-text">Email contact form (coming soon)</span>
-                    </div>
-                    <form class="contact-form" action="#" method="post">
-                        <div class="contact-form-row">
-                            <label>
-                                <span>Name</span>
-                                <input type="text" name="name" placeholder="Your name" disabled>
-                            </label>
-                            <label>
-                                <span>Email</span>
-                                <input type="email" name="email" placeholder="you@example.com" disabled>
-                            </label>
-                        </div>
-                        <label class="contact-form-message">
-                            <span>Message</span>
-                            <textarea name="message" rows="5" placeholder="Your message..." disabled></textarea>
+                <form class="contact-form" action="https://formspree.io/f/xlgdlzze" method="POST">
+                    <input type="hidden" name="_subject" value="Portfolio contact">
+                    <div class="contact-form-row">
+                        <label>
+                            <span>Name</span>
+                            <input type="text" name="name" placeholder="Your name" required>
                         </label>
-                        <button class="btn" type="button" disabled>Send Message</button>
-                    </form>
-                </div>
+                        <label>
+                            <span>Email</span>
+                            <input type="email" name="_replyto" placeholder="you@example.com" required>
+                        </label>
+                    </div>
+                    <label class="contact-form-message">
+                        <span>Message</span>
+                        <textarea name="message" rows="5" placeholder="Your message..." required></textarea>
+                    </label>
+                    <button class="btn" type="submit">Send Message</button>
+                </form>
 
                 <div class="social-links">
                     <a href="https://github.com/SadxSenpai" target="_blank"><i class="fab fa-github"></i></a>

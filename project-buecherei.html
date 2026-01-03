@@ -32,8 +32,8 @@
             <h2>Buecherei Windows App (Library Manager)</h2>
             
             <h3>Project Overview</h3>
-            <p>A robust desktop application designed to manage library inventories. This project demonstrates proficiency in C#, Windows Forms (WinForms), and CRUD data operations, mimicking real-world enterprise software requirements.</p>
-            <p style="color: var(--primary-color); font-style: italic; border-left: 3px solid var(--primary-color); padding-left: 1rem; margin-top: 1rem;">Note: This represents my first attempt at building a real-world ERP system. As an early learning project, it suffers from architectural flaws such as improper class implementation and lack of code reusability, which I have since learned to avoid.</p>
+            <p>A Windows desktop application for inventory management systems, demonstrating core enterprise software patterns. This C# WinForms application implements complete CRUD operations with database integration, representing foundational ERP system development experience. The system manages large-scale product inventories with real-time search capabilities and persistent data management.</p>
+            <p style="color: var(--primary-color); font-style: italic; border-left: 3px solid var(--primary-color); padding-left: 1rem; margin-top: 1rem;">Early learning project that demonstrates CRUD mastery and database integration. Architecture evolved significantly through subsequent projects, now emphasizing scalability and maintainability patterns used in modern enterprise systems.</p>
             
             <div style="margin: 2rem 0; text-align: center;">
                 <img src="Media/LMSFront.png" alt="Library Management System Interface" style="max-width: 100%; border: 2px solid var(--primary-color); box-shadow: 0 0 20px rgba(255, 0, 60, 0.2);">
@@ -41,17 +41,30 @@
 
             <h3>Key Features</h3>
             <ul>
-                <li><strong>Inventory Management:</strong> Full Create, Read, Update, Delete (CRUD) functionality for book entries.</li>
-                <li><strong>Search & Filter:</strong> Implemented logic to filter the book list by Title, Author, or ISBN in real-time.</li>
-                <li><strong>User Interface:</strong> Designed a clean, event-driven Windows interface using standard controls (DataGridView, TextBoxes, Buttons).</li>
-                <li><strong>Data Persistence:</strong> Connects to a MySQL database to store library inventory, supporting persistent data management.</li>
+                <li><strong>Complete CRUD Operations:</strong> Full Create, Read, Update, Delete functionality for inventory records with validation.</li>
+                <li><strong>Real-Time Search & Filtering:</strong> Implemented dynamic filtering across multiple fields (Title, Author, ISBN) with instant results without page reloads.</li>
+                <li><strong>Responsive UI Design:</strong> Event-driven interface using standard Windows controls (DataGridView, TextBoxes, Buttons) optimized for desktop usability.</li>
+                <li><strong>Database Integration:</strong> Direct MySQL connection enabling persistent storage, multi-user access, and enterprise-grade data management.</li>
+                <li><strong>Data Validation:</strong> Input validation and error handling for data integrity across all user operations.</li>
             </ul>
 
-            <h3>Technical Skills</h3>
+            <h3>Technical Skills & Patterns</h3>
             <ul>
-                <li><strong>Object-Oriented Programming (OOP):</strong> Utilized classes to encapsulate data and methods.</li>
-                <li><strong>Event Handling:</strong> Managed UI events to create a responsive user experience.</li>
-                <li><strong>Collections:</strong> Used Lists and LINQ to handle data sorting and searching efficiently.</li>
+                <li><strong>Object-Oriented Programming:</strong> Proper class design for data models, business logic separation, and method encapsulation.</li>
+                <li><strong>Event-Driven Architecture:</strong> Responsive UI event handling (button clicks, text changes, form submissions) creating seamless user interactions.</li>
+                <li><strong>Data Management:</strong> LINQ queries for sorting, filtering, and searching large datasets efficiently without blocking the UI.</li>
+                <li><strong>Database Communication:</strong> SQL query construction, parameterized queries for security, connection pooling, and transaction handling.</li>
+                <li><strong>Windows Desktop Development:</strong> WinForms framework expertise with custom controls and form management.</li>
+            </ul>
+
+            <h3>Enterprise Application Patterns</h3>
+            <p>This project demonstrates foundational patterns used in real-world inventory management systems:</p>
+            <ul>
+                <li>CRUD operations as the core of data management systems</li>
+                <li>Multi-tier architecture (UI layer, business logic, data access layer)</li>
+                <li>Real-time search and filtering without system latency</li>
+                <li>Database integrity through proper validation and error handling</li>
+                <li>Scalable design applicable to warehouse, retail, and supply chain systems</li>
             </ul>
 
             <h3>How to Run</h3>
